@@ -24,21 +24,40 @@ allImages[activeImage].classList.add("active");
 
 // click bottone avanti
 const btnDown = document.querySelector(".down");
+const btnUp = document.querySelector(".up");
 btnDown.addEventListener("click", function() {
-    if (activeImage < (allImages.length - 1)) {
-        // rimuovo active 
-        allImages[activeImage].classList.remove("active");
+    btnUp.classList.remove("hidden");
+    
+    // rimuovo active 
+    allImages[activeImage].classList.remove("active");
 
-        // do un incremento alla prima immagine 
-        activeImage++;
+    // do un incremento alla prima immagine 
+    activeImage++;
 
-        // aggiungo active alla successiva
-        allImages[activeImage].classList.add("active");
+    // aggiungo active alla successiva
+    allImages[activeImage].classList.add("active");
 
-        if (activeImage === allImages.length - 1) {
-            btnDown.classList.add("hidden");
-        }
-    } 
+    if (activeImage === allImages.length - 1) {
+        btnDown.classList.add("hidden");
+    }
+    
 });
 
+// click bottone indietro
+btnUp.classList.add("hidden");
+btnUp.addEventListener("click", function() {
+btnDown.classList.remove("hidden");
+    // rimuovo active
+    allImages[activeImage].classList.remove("active");
+
+    // decremento l'immagine 
+    activeImage--;
+
+    // aggiungo active alla nuova immagine 
+    allImages[activeImage].classList.add("active");
+
+    if (activeImage === 0) {
+        btnUp.classList.add("hidden");
+    }
+})
 
